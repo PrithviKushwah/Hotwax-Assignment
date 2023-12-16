@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\product_model;
 
 class product extends Controller
 {
@@ -11,7 +12,8 @@ class product extends Controller
      */
     public function index()
     {
-        //
+        $product = product_model::all();
+        return response()->json(['data' => $product], 200);
     }
 
     /**
@@ -27,7 +29,17 @@ class product extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new product_model;
+        $product->PRODUCT_ID = $request->PRODUCT_ID;
+        $product->OWNER_PARTY_ID= $request->OWNER_PARTY_ID;	
+        $product->PRODUCT_NAME= $request->PRODUCT_NAME;	
+        $product->DESCRIPTION= $request->DESCRIPTION;	
+        $product->CHARGE_SHIPPING= $request->CHARGE_SHIPPING;	
+        $product->RETURNABLE= $request->RETURNABLE;	
+       
+      
+        $product->save();
+            return response()->json(['message' => 'product added successfully', 'data' => $product], 201);
     }
 
     /**
@@ -51,7 +63,23 @@ class product extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $product = product_model::find($id);
+
+        if (!$product) {
+            return response()->json(['message' => 'product not found'], 404);
+        }
+        $product = new product_model;
+        $product->PRODUCT_ID = $request->PRODUCT_ID;
+        $product->OWNER_PARTY_ID= $request->OWNER_PARTY_ID;	
+        $product->PRODUCT_NAME= $request->PRODUCT_NAME;	
+        $product->DESCRIPTION= $request->DESCRIPTION;	
+        $product->CHARGE_SHIPPING= $request->CHARGE_SHIPPING;	
+        $product->RETURNABLE= $request->RETURNABLE;	
+
+        $product->save();
+    
+        return response()->json(['message' => 'product updated successfully', 'data' => $product], 200);
     }
 
     /**
@@ -59,6 +87,11 @@ class product extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = product_model::find($id);
+        if (!$product) {
+            return response()->json(['message' => 'product not found'], 404);
+        }
+        $product->delete();
+        return response()->json(['message' => 'product Deleted successfully'], 200);
     }
 }
