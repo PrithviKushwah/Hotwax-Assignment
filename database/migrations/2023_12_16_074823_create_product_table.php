@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('product_models', function (Blueprint $table) {
             $table->id();
             $table->string('PRODUCT_ID')->unique();
             $table->string('OWNER_PARTY_ID')->nullable();
@@ -38,11 +38,11 @@ return new class extends Migration
     public function down(): void
     {
         // Dropping foreign key
-        Schema::table('product', function (Blueprint $table) {
+        Schema::table('product_models', function (Blueprint $table) {
             // $table->dropForeign(['OWNER_PARTY_ID']);
         });
 
         // Dropping the table
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('product_models');
     }
 };

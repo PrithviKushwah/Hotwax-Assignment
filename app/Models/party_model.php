@@ -12,6 +12,5 @@ class party_model extends Model
         'PARTY_ID',
         'PARTY_TYPE_ENUM_ID',
       
-       
-];
+    ];
 }

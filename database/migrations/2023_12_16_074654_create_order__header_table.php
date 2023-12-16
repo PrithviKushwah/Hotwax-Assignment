@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\order_part_model;
+
 
 return new class extends Migration
 {
@@ -24,6 +26,7 @@ return new class extends Migration
             $table->decimal('GRAND_TOTAL')->nullable();
             $table->date('COMPLETED_DATE')->nullable();
             $table->timestamps();
+            
         });
     }
 
@@ -32,6 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order__header');
+        Schema::dropIfExists('order_header_models');
     }
+
+    
 };

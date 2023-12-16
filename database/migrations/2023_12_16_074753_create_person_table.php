@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('person', function (Blueprint $table) {
+        Schema::create('person_models', function (Blueprint $table) {
             $table->id();
             $table->string('PARTY_ID')->unique(); // Unique constraint
             $table->string('SALUTATION')->nullable();
@@ -40,11 +40,11 @@ return new class extends Migration
     public function down(): void
     {
         // Dropping foreign key
-        Schema::table('person', function (Blueprint $table) {
+        Schema::table('person_models', function (Blueprint $table) {
             // $table->dropForeign(['PARTY_ID']);
         });
 
         // Dropping the table
-        Schema::dropIfExists('person');
+        Schema::dropIfExists('person_models');
     }
 };

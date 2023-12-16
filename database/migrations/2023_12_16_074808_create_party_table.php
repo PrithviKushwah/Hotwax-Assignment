@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('party', function (Blueprint $table) {
+        Schema::create('party_models', function (Blueprint $table) {
             $table->id();
             $table->string('PARTY_ID')->unique();
             $table->string('PARTY_TYPE_ENUM_ID')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('party');
+        Schema::dropIfExists('party_models');
     }
 };

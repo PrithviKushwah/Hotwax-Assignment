@@ -35,7 +35,7 @@ class order_header extends Controller
 
         
         $order_header = new order_header_model;
-        // $order_header->ORDER_ID = $uid;
+        $order_header->ORDER_ID = $request->ORDER_ID;
         $order_header->ORDER_NAME= $request->ORDER_NAME;	
         $order_header->PLACED_DATE= $request->PLACED_DATE;	
         $order_header->APPROVED_DATE= $request->APPROVED_DATE;	
